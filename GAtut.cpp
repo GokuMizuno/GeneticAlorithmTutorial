@@ -182,6 +182,11 @@ int main(char args[])
 {
 	if (args[] == "")
 		args = "1111000000000000000000000000000000000000000000000000000000001111";
+	if (sizeof(args) > (sizeof(char) * 64))  //this conflicts with Individual.setLength()
+	{
+		std::cout << "Your string is too large.  Using default string.\n";
+		args = "1111000000000000000000000000000000000000000000000000000000001111";
+	}
 	Fitness.setSolution(args);
 
 	Population myPop = new Population(50, true);
